@@ -1,0 +1,447 @@
+
+@import 'partial/_variables';
+@import 'partial/_mixin';
+
+.ugf-block {
+	position: relative;
+	.alternet-access {
+		position: absolute;
+		top: 40px;
+		right: 40px;
+		p {
+			font-size: 1.4rem;
+			font-weight: 400;
+			color: $fontColor;
+			font-family: $bodyFont;
+			a {
+				color: $primaryColor;
+			}
+		}
+	}
+}
+
+.ugf-bg-1 {
+	background: url(../images/bg/bg-1.jpg) no-repeat center center;
+}
+
+.ugf-logo {
+	padding: 0 40px;
+	position: absolute;
+	top: 30px;
+	left: 0;
+}
+
+.form-block {
+	display: flex;
+	flex-wrap: wrap;
+	min-height: 100vh;
+	padding: 100px 0;
+	align-items: center;
+} 
+
+.ugf-form-block-header {
+	text-align: center;
+	margin-bottom: 35px;
+	width: 100%;
+	h1 {
+		font-size: 3.0rem;
+		margin-bottom: 20px;
+		color: $headerColor;
+		font-family: $bodyFont;
+	}
+	p {
+		font-size: 1.5rem;
+		color: $fontColor;
+		font-family: $bodyFont;
+	}
+}
+
+.ugf-third-party-login {
+	width: 100%;
+	a {
+		display: block;
+		width: 100%;
+		text-align: center;
+		border-radius: 5px;
+		border: 1px solid rgba($black, .1);
+		font-size: 1.4rem;
+		font-weight: 700;
+		color: $fontColor;
+		line-height: 60px;
+		font-family: $bodyFont;
+		background: $white;
+		&:hover {
+			box-shadow: 0px 5px 8px 0px rgba($black, 0.05);
+		}
+		img {
+			margin-right: 10px;
+		}
+		+ a {
+			margin-top: 20px;
+		}
+	}
+}
+
+.ugf-block-separator {
+	height: 85px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	&:before {
+		position: absolute;
+		top: calc(50% - 1px);
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: rgba($black, .1);
+		content: '';
+		z-index: 1;
+	}
+	p {
+		text-transform: uppercase;
+		font-size: 1.4rem;
+		font-weight: 400;
+		color: $fontColor;
+		background: $white;
+		position: relative;
+		z-index: 2;
+		padding: 0 15px;
+		font-family: $bodyFont;
+	}
+}
+
+.ugf-input-block {
+	width: 100%;
+	.form-group {
+		position: relative;
+		margin-bottom: 20px;
+		.form-control {
+			height: 60px;
+			border: 2px solid rgba($black, .08);
+			border-radius: 5px;
+			color: $fontColor;
+			font-size: 1.4rem;
+			font-weight: 400;
+			font-family: $bodyFont;
+			outline: none;
+			box-shadow: none;
+			padding: 0;
+			padding-left: 45px;
+			padding-right: 15px;
+			&::-webkit-input-placeholder {
+			  color: $fontColor;
+			}
+			&::-moz-placeholder { 
+			  color: $fontColor;
+			}
+			&:-ms-input-placeholder {
+			  color: $fontColor;
+			}
+			&:-moz-placeholder {
+			  color: $fontColor;
+			}
+			&:focus {
+				border-color: rgba($primaryColor, .3);
+				+ label {
+					i {
+						color: $primaryColor;
+					}
+				}
+			}
+		}
+		.form-control.has-error {
+			border-color: rgba($red2, .25);
+			+ .error-msg {
+			 	position: absolute;
+				top: 18px;
+				right: 15px;
+				color: $red2;
+				font-size: 1.4rem;
+				font-weight: 400;
+			}
+		}
+		label {
+			position: absolute;
+			top: 50%;
+			left: 0;
+			transform: translateY(-50%);
+			width: 45px;
+			text-align: center;
+			i {
+				font-size: 2.4rem;
+				color: #aaaaaa;
+				transition: all .3s ease;
+			}
+		}
+		.custom-checkbox {
+			.custom-control-input {
+				height: 18px;
+				width: 18px;
+				border-radius: 3px;
+				border: 3px solid rgba($black, .08);
+				outline: none;
+				box-shadow: none;
+				&:checked~.custom-control-label::before {
+					background: $primaryColor;
+				}
+			}
+			.custom-control-label {
+				width: auto;
+				text-align: left;
+				position: static;
+				top: auto;
+				left: auto;
+				transform: translateY(0);
+				padding-left: 30px;
+				&:before {
+					top: 2px;
+					left: 0;
+					height: 18px;
+					width: 18px;
+					border-radius: 3px;
+					border: 2px solid rgba($black, .08);
+					box-shadow: none;
+					outline: none;
+				}
+				&:after {
+					top: 2px;
+					left: 0;
+					height: 18px;
+					width: 18px;
+				}
+				a {
+					color: $primaryColor;
+				}
+			}
+		}
+	}
+	.check-flex {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		a {
+			color: $fontColor;
+			font-family: $bodyFont;
+			font-weight: 400;
+			&:hover {
+				color: $primaryColor;
+			}
+		}
+	}
+	.pass-block {
+		position: relative;
+		.pass-toggler-btn {
+			position: absolute;
+			top: 11px;
+			right: 50px;
+			font-size: 2.0rem;
+			i {
+				cursor: pointer;
+			}
+			#eye-slash {
+				display: none;
+			}
+		}
+		.error-block {
+			position: absolute;
+			top: 19px;
+			right: 15px;
+			&:hover {
+				.validation-requirement {
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+			.icon {
+				&.incomplete-pass {
+					i {
+						color: $alert;
+					}
+				}
+				i {
+					font-size: 2.0rem;
+				}
+			}
+			.validation-requirement {
+				visibility: hidden;
+				opacity: 0;
+				transition: all .3s ease;
+				z-index: 9;
+				position: absolute;
+				top: -10px;
+				left: calc(100% + 10px);
+				background: $white;
+				border: 1px solid rgba($black, .08);
+			  box-shadow: 0px 5px 30px 0px rgba($black, 0.1);
+			  min-width: 260px;
+			  border-radius: 5px;
+			  &:before {
+			  	position: absolute;
+			  	top: 10px;
+			  	left: -8px;
+			  	content: '';
+			  	width: 0; 
+				  height: 0; 
+				  border-top: 8px solid transparent;
+				  border-bottom: 8px solid transparent; 
+			  	box-shadow: 0px -5px -30px 0px rgba($black, 0.1);
+				  border-right:8px solid $white; 
+			  }
+			  ul {
+			  	padding: 20px 30px;
+			  	margin: 0;
+			  	list-style: none;
+			  	li {
+						font-size: 1.3rem;
+						font-weight: 400;
+						color: $fontColor;
+						font-family: $bodyFont;
+						position: relative;
+						padding-left: 25px;
+						+ li {
+							margin-top: 5px;
+						}
+						&.incomplete-item {
+							&:before {
+								color: $grey;
+								content: url(../images/check-grey.svg);
+							}
+						}
+						&:before {
+							content: url(../images/check-green.svg);
+    					margin-right: 10px;
+    					height: 18px;
+    					width: 18px;
+    					position: absolute;
+    					top: 3px;
+    					left: 0;
+						}
+			  	}
+			  }
+			}
+		}
+	}
+	.btn {
+		display: block;
+		width: 100%;
+		border-radius: 5px;
+		height: 60px;
+		font-size: 1.5rem;
+		font-weight: 700;
+		color: $white;
+		font-family: $bodyFont;
+		background: $primaryColor;
+		outline: none;
+		box-shadow: none;
+	}
+}
+
+.final-bg {
+	background: url(../images/bg/bg-1.jpg) no-repeat center bottom;
+	background-size: cover;
+}
+
+.final-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+	text-align: center;
+	padding: 150px 15px;
+	h2 {
+		font-size: 3.6rem;
+		font-weight: 700;
+		color: $headerColor;
+		font-family: $bodyFont;
+		margin-top: 35px;
+		margin-bottom: 10px;
+	}
+	p {
+		color: $fontColor;
+		font-size: 1.5rem;
+		font-weight: 400;
+		font-family: $bodyFont;
+		max-width: 350px;
+		margin: 0 auto 40px;
+	}
+	.btn {
+		width: 170px;
+		text-align: center;
+		background: $blue3;
+		color: $white;
+		font-size: 1.4rem;
+		height: 60px;
+		padding: 0;
+		font-weight: 700;
+		font-family: $bodyFont;
+		border-radius: 5px;
+		border: 0;
+		outline: none;
+		box-shadow: none;
+		line-height: 60px;
+	}
+}
+
+@media all and (max-width: 991px) {
+	.ugf-input-block {
+		.pass-block {
+			.error-block {
+				.validation-requirement {
+				  min-width: 210px;
+				  ul {
+				  	padding: 20px;
+				  }
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width: 767px) {
+	.ugf-logo {
+		left: 50%;
+		padding: 0;
+		transform: translateX(-50%);
+	}
+	.form-block {
+		padding-bottom: 50px;
+		padding-top: 150px;
+		min-height: auto;
+	}
+	.ugf-block {
+		.alternet-access {
+			position: static;
+			text-align: center;
+			margin-bottom: 100px;
+		}
+	}
+	.ugf-input-block {
+		.pass-block {
+			.error-block {
+				.validation-requirement {
+				  left: auto;
+				  right: calc(100% + 10px);
+				  &:before {
+				  	left: auto;
+				  	right: -8px;
+				  	transform: rotate(180deg);
+				  }
+				  ul {
+				  	padding: 20px;
+				  }
+				}
+			}
+		}
+	}
+}
+
+@media all and (max-width: 539px) {
+	.final-content {
+		h2 {
+			font-size: 3.2rem;
+		}
+	}
+}

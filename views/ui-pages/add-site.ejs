@@ -1,0 +1,160 @@
+<%- include("included/header",{user_Info:"userInfo"}); -%>
+
+
+
+
+
+    <div class="container-fluid py-4">
+      <form action="/locate" method="post">
+        <div class="row">
+          <div class="col-xl-5 col-sm-5 mb-xl-0 mb-4">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Physhical Address" style="height: 40px;" name="phyAddress" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-4 col-sm-5 mb-xl-0 mb-4">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <select name="state" id="inputCountry" class="form-control" required>
+                  
+                  <option value="" selected disabled>Choose State of Site *</option>
+                  <option value="Abia">Abia</option>
+                  <option value="Adamawa">Adamawa</option>
+                  <option value="Akwa Ibom">Akwa Ibom</option>
+                  <option value="Anambra">Anambra</option>
+                  <option value="Bauchi">Bauchi</option>
+                  <option value="Bayelsa">Bayelsa</option>
+                  <option value="Benue">Benue</option>
+                  <option value="Borno">Borno</option>
+                  <option value="Cross River">Cross River</option>
+                  <option value="Delta">Delta</option>
+                  <option value="Ebonyi">Ebonyi</option>
+                  <option value="Edo">Edo</option>
+                  <option value="Ekiti">Ekiti</option>
+                  <option value="Enugu">Enugu</option>
+                  <option value="FCT">Federal Capital Territory (FCT)</option>
+                  <option value="Gombe">Gombe</option>
+                  <option value="Imo">Imo</option>
+                  <option value="Jigawa">Jigawa</option>
+                  <option value="Kaduna">Kaduna</option>
+                  <option value="Kano">Kano</option>
+                  <option value="Katsina">Katsina</option>
+                  <option value="Kebbi">Kebbi</option>
+                  <option value="Kogi">Kogi</option>
+                  <option value="Kwara">Kwara</option>
+                  <option value="Lagos">Lagos</option>
+                  <option value="Nasarawa">Nasarawa</option>
+                  <option value="Niger">Niger</option>
+                  <option value="Ogun">Ogun</option>
+                  <option value="Ondo">Ondo</option>
+                  <option value="Osun">Osun</option>
+                  <option value="Oyo">Oyo</option>
+                  <option value="Plateau">Plateau</option>
+                  <option value="Rivers">Rivers</option>
+                  <option value="Sokoto">Sokoto</option>
+                  <option value="Taraba">Taraba</option>
+                  <option value="Yobe">Yobe</option>
+                  <option value="Zamfara">Zamfara</option>
+                </select>
+                
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-xl-3 col-sm-5 mb-xl-0 mb-4">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <select id="dropdown" class="form-control" style="height: 40px;" name="structure" required>
+                  <option value="option3" selected disabled>Structure</option>
+                  <option value="48 Sheet">48 Sheet</option>
+                  <option value="Unipole">Unipole</option>
+                  <option value="Portrait">Portrait</option>
+                  <option value="Eye Catcher">Eye Catcher</option>
+                  <option value="Gantry">Gantry</option>
+                  <option value="Roof Top">Roof Top</option>
+                  <option value="Wall Drape">Wall Drape</option>
+                  <option value="Roundabout">Roundabout</option>
+                  <option value="Lamp Poles">Lamp Poles</option>
+                  <option value="Keke Branding">Keke Branding</option>
+                  <option value="Building Branding">Building Branding</option>
+                </select>
+                
+              </div>
+            </div>
+          </div>
+          <hr>
+          <em style="text-align: center;">Co-ordinates</em>
+          <hr>
+
+       
+          <div class="col-xl-6 col-sm-5 mb-xl-0 mb-4">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Enter Latitude" style="height: 40px;" name="latitude" required>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-6 col-sm-5 mb-xl-0 mb-4">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Enter Longitude..." style="height: 40px;" name="longitude" required>
+              </div>
+            </div>
+          </div>
+          <br /><br /><br />
+          
+  
+          <!-- Button -->
+          <div class="col-xl-12 col-sm-12 mb-xl-0 mb-4">
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <button type="submit" class="btn bg-gradient-primary" style="height: 60px; width: 100%;">Find Location</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+      <div class="row mt-4">
+        <%if( locations.length!==0){ %>
+          <div class="col-lg-12">
+            <div class="card h-100 p-3">
+              <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('../assets-ui/img/ivancik.jpg');">
+                <span class="mask bg-gradient-dark"></span>
+                <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+                  <h5 class="text-white font-weight-bolder mb-4 pt-2" style="text-align: center;"><%= locations[5].formatted_address%></h5>
+                  <p class="text-white">Latitude: <%= locations[2].geometry.location.lat%></p>
+                  <p class="text-white">Longitude: <%= locations[2].geometry.location.lng%></p>
+                  <form action="/mapshow" method="post" id="showmap">
+                    <input type="text" name="address" value="<%= locations[0].formatted_address%>" hidden>
+                    <input type="text" name="lat" value="<%= locations[0].geometry.location.lat%>" hidden>
+                    <input type="text" name="lng" value="<%= locations[0].geometry.location.lng%>" hidden>
+                    <input type="text" name="phyadd" value="<%= phyAdd%>" hidden>
+                    <input type="text" name="structure" value="<%= structure%>" hidden>
+                    <input type="text" name="state" value="<%= state%>" hidden>
+
+                  
+                  <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" 
+                  href="javascript:document.getElementById('showmap').submit();">
+                    Go to map
+                    <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                  </a>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+       <% }else{ %>
+          <p>No Data Found!!!</p>
+       <% } %>
+        
+      </div>
+
+      <%- include("included/footer"); -%>
