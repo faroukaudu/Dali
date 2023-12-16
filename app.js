@@ -10,7 +10,7 @@ const app = myModule.main;
 
 
 
-app.listen(4000, function(req,res){
+app.listen(process.env.PORT || 4000, function(req,res){
   console.log("server is now starting @ 4000!");
 });
 

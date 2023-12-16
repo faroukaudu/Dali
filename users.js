@@ -15,15 +15,15 @@ var userschema = require(__dirname + '/db/userdb.js');
 
 
 
-const uri = "mongodb://127.0.0.1:27017/surreal";
-database().catch(err => console.log(err));
+// const uri = "mongodb://127.0.0.1:27017/surreal";
+// database().catch(err => console.log(err));
 
 
 
-async function database() {
-    await mongoose.connect(uri);
-    // await mongoose.connect('mongodb://127.0.0.1:27017/gitportalDB');
-  }
+// async function database() {
+//     await mongoose.connect(uri);
+//     // await mongoose.connect('mongodb://127.0.0.1:27017/gitportalDB');
+//   }
 
 
 

@@ -1,4 +1,5 @@
 const express = require("express");
+require('dotenv').config();
 const ejs = require("ejs");
 const lodash = require('lodash');
 const bodyParser = require("body-parser");
@@ -30,7 +31,7 @@ app.use(express.static("public"));
 
 
 app.use(session({
-  secret: 'surreal',
+  secret: process.env.SESSION,
   resave: false,
   saveUninitialized: false,
   cookie: { 
@@ -47,7 +48,8 @@ app.use(passport.session());
 
 
 
-const uri = "mongodb://127.0.0.1:27017/surreal";
+// const uri = "mongodb://127.0.0.1:27017/surreal";
+const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
 database().catch(err => console.log(err));
 
 
