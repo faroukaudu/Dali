@@ -68,17 +68,22 @@ app.post("/addUser",(req, res) => {
   });
 
 
-  app.get("/add-user", (req,res)=>{
-    
-    if(req.isAuthenticated()){
-        res.render("ui-pages/add-user");
-    }else{
-        res.redirect("login");
-    }
+  app.get("/add-users", (req,res)=>{
+   
+    res.render("ui-pages/add-user");
+    // if(req.isAuthenticated()){
+    //     res.render("ui-pages/add-user");
+    // }else{
+    //     res.redirect("login");
+    // }
 
     
   })
 
   app.get("/trol",(req,res)=>{
     res.redirect("/login")
+  })
+
+  app.get("/headadmin", (req,res)=>{
+
   })
