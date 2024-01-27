@@ -210,8 +210,8 @@ function ispaid(total, cut){
   var tta = (tmoney/100) * parseInt(cut);
   console.log("totalmo" + tta);
   var pending = (tmoney - tta);
-  return pending;
-xd 
+  return tta;
+
 }
 
 app.post("/form", function(req,res){

@@ -25,6 +25,7 @@ function generatePassword(length) {
 
 app.post("/addUser",(req, res) => {
   var password = generatePassword(10);
+  console.log(password);
 
     console.log(req.body.username);
 
@@ -70,12 +71,25 @@ app.post("/addUser",(req, res) => {
 
   app.get("/add-users", (req,res)=>{
    
+    // res.render("ui-pages/add-user");
+    if(req.isAuthenticated()){
+      console.log(req.user.isAdmin);
+      if(req.user.isAdmin == true){
+        res.render("ui-pages/add-user");
+      }else{
+        res.send("Only Admin can add new users");
+      }
+        
+    }else{
+        res.redirect("login");
+    }
+
+    
+  })
+
+  app.get("/onlythedevelopercanaddadmin", (req,res)=>{
+   
     res.render("ui-pages/add-user");
-    // if(req.isAuthenticated()){
-    //     res.render("ui-pages/add-user");
-    // }else{
-    //     res.redirect("login");
-    // }
 
     
   })
@@ -86,4 +100,20 @@ app.post("/addUser",(req, res) => {
 
   app.get("/headadmin", (req,res)=>{
 
+  })
+
+
+  app.post("/block", (req,res)=>{
+    User.findById(req.body.blockId).then((userB)=>{
+      if(userB.active == true){
+        userB.active = false;
+        userB.save();
+
+      }else{
+        userB.active = true;
+      userB.save();
+
+      }
+      res.redirect("/all-users")
+    })
   })

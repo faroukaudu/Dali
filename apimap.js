@@ -92,3 +92,14 @@ app.get("/vr", async(req,res)=>{
 
     
   })
+
+
+  app.post("/delete-loc", (req,res)=>{
+    console.log("I am here");
+    console.log(req.body.loc_id);
+    LocationDB.findByIdAndDelete({_id:req.body.loc_id}).then((done)=>{
+        res.redirect("list-location");
+    }).catch((err)=>{
+        res.send(err);
+    })
+  })

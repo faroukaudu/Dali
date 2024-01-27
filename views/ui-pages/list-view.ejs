@@ -73,11 +73,12 @@
                    
             
                     
-                    <form action="/edit" method="post">
+                  
+                    <form action="/delete-loc" method="post">
                       <td class="align-middle">
                         <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
-                          <input type="hidden" name="ads_id" value="<%= item._id %>">
-                          <button type="submit" class="plain-bt"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>edit</button>
+                          <input type="hidden" name="loc_id" value="<%= item._id %>">
+                          <button type="submit" class="plain-bt"><i class="fas fa-trash text-dark me-2" aria-hidden="true"></i>delete</button>
                         </a>
                       </td>
 

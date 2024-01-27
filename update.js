@@ -11,6 +11,22 @@ app.get("/update", (req,res)=>{
 })
 
 app.post("/update", async (req,res)=>{
+    // var topup;
+    var newIsPaid;
+    var newCut;
+    await CampDB.findById({_id:req.body.camp_id}).then((amount)=>{
+        console.log(amount.amount_paid);
+        
+        newIsPaid = Number(req.body.outstanding) + amount.ispaid;
+        newCut = (newIsPaid / amount.amount_paid) * 100;
+        console.log(typeof amount.ispaid);
+        console.log(typeof Number(req.body.outstanding));
+        console.log(typeof amount.amount_paid);
+        // topup = amount.amount_paid + req.body.address;
+        // console.log(topup);
+    })
+    console.log(newCut);
+    console.log(newIsPaid);
     console.log(req.body.camp_id);
     var updateInfo = 
     {client_camp:req.body.cClient,
@@ -19,9 +35,12 @@ app.post("/update", async (req,res)=>{
     state:req.body.state,
     structure:req.body.structure,
     address: req.body.address,
+    cut:newCut,
+    ispaid:newIsPaid
+    
     };
 
-await CampDB.findOneAndUpdate({_id:req.body.camp_id}, updateInfo).then((camp)=>{
+ CampDB.findOneAndUpdate({_id:req.body.camp_id}, updateInfo).then((camp)=>{
     
 
     // updateInfo.save();
