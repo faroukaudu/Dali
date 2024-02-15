@@ -3,12 +3,15 @@ const passport = require("passport");
 const session = require("express-session");
 const sendingMail = require("./nodemailer.js");
 const bodyParser = require("body-parser");
+const emailRoute = require("./emailsend.js");
+const reminderEmail = emailRoute.reminderMail;
 
 
 
 app = myapp.main;
 app.use(bodyParser.json());
 User = myapp.operators;
+CampDb = myapp.Campaign;
 
 function generatePassword(length) {
   let result = '';
@@ -116,4 +119,32 @@ app.post("/addUser",(req, res) => {
       }
       res.redirect("/all-users")
     })
+  })
+
+  app.get("/send-reminder/:campID", async (req,res)=>{
+    // console.log("id is"+ req.params.campID);
+     await CampDb.findById({_id:req.params.campID}).then((campaignFound)=>{
+      // console.log(campaignFound);
+      try {
+        reminderEmail({username:campaignFound.client_camp,email:campaignFound.campEmail,
+          endDate:campaignFound.end_date});
+          res.render("animation/remindersent");
+      } catch (err){
+        res.send("Mail Not Sent! "+ err)
+      }
+      
+        
+      // console.log(campaignFound);
+      // sendingMail.emailSent({sendTo:"fagzy98@gmail.com", 
+      // title:"Signboard Advertisement Expiry on "+campaignFound.end_date ,
+      // message:" Dear "+ campaignFound.client_camp +" Kindly note that the current agreement for your signboard space is set to expire on 👉"+
+      //  campaignFound.end_date +"If you wish to continue showcasing your brand with us, we would be delighted to assist you in renewing the arrangement."});
+    }).catch((err)=>{
+      res.send("Error is "+err);
+    })
+    
+  })
+
+  app.get("/sent",(req,res)=>{
+    res.render("animation/remindersent");
   })

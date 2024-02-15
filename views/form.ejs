@@ -151,19 +151,21 @@
           <div class="col-lg-8 offset-lg-2 p-sm-0">
             <div class="ugf-form">
               <form action="/form" method="post">
+                <input type="hidden" name="oName" value="<%= user%>">
                 <div class="input-block">
                   <h4>New Campaign</h4>
                   <div class="row">
+                    
                     <div class="col-md-6 p-sm-0">
                       <div class="form-group">
-                        <label for="inputFname">Operator Name</label>
-                        <input name="oName" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required>
+                        <label for="inputFname">Client Name</label>
+                        <input name="cClient" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required>
                         </div>
                     </div>
                     <div class="col-md-6 p-sm-0">
                       <div class="form-group">
-                        <label for="inputFname">Campaign Name</label>
-                        <input name="cClient" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required>
+                        <label for="inputFname">Client Email</label>
+                        <input name="cMail" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required>
                         </div>
                     </div>
                     <div class="col-md-6 p-sm-0">

@@ -6,6 +6,7 @@ mongoose.set('strictQuery', true);
 
 const campSchema = new mongoose.Schema({
 operator_name:String,
+campEmail:String,
 startdate:String,
 unit:Number,
 dur_month:Number,

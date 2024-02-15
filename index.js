@@ -15,6 +15,7 @@ const passport = require("passport");
 const session = require("express-session");
 const passportLocalMongoose = require("passport-local-mongoose");
 require('dotenv').config();
+const remainderMail = require("./nodemailer.js");
 
 
 
@@ -129,12 +130,12 @@ app.post("/login", (req,res)=>{
           console.log(req.user);
           // res.redirect("/landing");
           User.findOne({email:req.body.username}).then((foundUser)=>{
-            // if(foundUser.isAdmin ===true){
+            if(foundUser.active ==true){
               res.redirect("/dashboard");
-            // }else{
+            }else{
               // res.redirect("/welcome");
-              // res.send("Not Logged in");
-            // }
+              res.send("<h3 >Your Account has been Blocked!<br>Kindly Contact your org Admin</h3>");
+            }
           })
         });
       } else {
@@ -161,7 +162,7 @@ app.get("/logout", (req,res)=>{
 
 
 app.get("/form", async function(req,res){
-  // if(req.isAuthenticated()){
+  if(req.isAuthenticated()){
     mylist = ["farouk","musa","fadila"];
     await Campdb.find({})
     .then((result) => {
@@ -182,14 +183,14 @@ app.get("/form", async function(req,res){
 
 
         // console.log(loc[0]);
-        res.render("form", {clients:result, user:{fullname:mylist}, location:arrjoin});
+        res.render("form", {clients:result, user:req.user.fullname, location:arrjoin});
       })
       // console.log(result[0].client_camp);
       
     })
-  // }else{
-  //   res.redirect("/login")
-  // }
+  }else{
+    res.redirect("/login")
+  }
 })
 
 function convert(money){
@@ -214,6 +215,50 @@ function ispaid(total, cut){
 
 }
 
+
+
+
+
+function remainder(remainderdate,end_date) {
+  console.log("DOne");
+  (function loop() {
+    
+      var now = new Date().toLocaleDateString('en-us', { weekday:"short", 
+      year:"numeric", month:"short", day:"numeric"});
+      console.log("todays date is:"+ now + "And remainder date is"+ remainderdate);
+      if (now === remainderdate) {
+          console.log("Send Mails");
+          console.log("todays date is:"+ now + "And remainder date is"+ remainderdate);
+          remainderMail.emailSent({sendTo:req.body.username,
+             title:"Friendly Reminder: Signboard Advertisement Expiry on"+ end_date,
+             message:" Hello "+ req.body.fullname +" Login in with your email and this password 👉 "+ password});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          
+      }else{
+        console.log("Not time to send remainder wait another 6 sec");
+        now = new Date();                  // allow for time passing
+      var delay = 6000 - (now % 6000); // exact ms to next minute interval
+      setTimeout(loop, delay);
+      }
+      
+  })();
+}
+
+// surprise("lol");
+
 app.post("/form", function(req,res){
     // oName,sDate,unit,dMonth,dWeek,amount,cCleint,
     // state,addr,structure,isPaid,status
@@ -222,8 +267,26 @@ app.post("/form", function(req,res){
     var startdate = req.body.sDate;
     var numMonth = parseInt(req.body.dMonth);
     var numWeek = parseInt(req.body.dWeek);
+    // var rDate = new dates.endDate();
+    // rDate.setDate(rDate.getDate() -7);
+    // d.setDate(d.getDate() + 67)
+    // var rNewDates = rDate.toLocaleDateString('en-us', { weekday:"short", 
+    // year:"numeric", month:"short", day:"numeric"});
+    // console.log(rNewDates);
+    // remainder(rNewDates);
+    var newEnddate = new dates.endDate(new Date(startdate), numWeek, numMonth);
+    newEnddate.setDate(newEnddate.getDate() -7);
+    var rDate = newEnddate.toLocaleDateString('en-us', { weekday:"short", 
+    year:"numeric", month:"short", day:"numeric"});
+    
     var enddate  = new dates.endDate(new Date(startdate), numWeek, numMonth).toLocaleDateString('en-us', { weekday:"short", 
   year:"numeric", month:"short", day:"numeric"});
+  remainder(rDate, enddate);
+  
+  console.log("end date is:" + enddate);
+  console.log("new enddate is"+ newEnddate);
+
+
 
     Campdb.create({operator_name:req.body.oName,
         startdate:req.body.sDate,
@@ -237,6 +300,7 @@ app.post("/form", function(req,res){
         address:req.body.addr,
         structure:req.body.structure,
         ads_status:req.body.status,
+        campEmail:req.body.cMail,
         cut:req.body.userPaid, //This is for the percentage number cut, The one "ispaid"about has been process via func. 
         payment_status:true,
         remark:"Going well",
@@ -250,7 +314,7 @@ app.post("/form", function(req,res){
           })
     
     
-})
+});
 
 app.get("/cal", function(req,res){
     res.render("index");
@@ -271,8 +335,53 @@ app.get("/table", function(req, res){
 })
 
 app.get("/", (req,res)=>{
+
+  var enddate  = new dates.endDate(new Date(), 1, 2);
+  enddate.setDate(enddate.getDate() + 0);
+  var enddateNew = enddate.toLocaleDateString('en-us', { weekday:"short", 
+  year:"numeric", month:"short", day:"numeric"});
+  
+  var d = new Date();
+  d.setDate(d.getDate() + 67)
+  var dNew = d.toLocaleDateString('en-us', { weekday:"short", 
+  year:"numeric", month:"short", day:"numeric"});
+  console.log("Todays Date: " + dNew);
+  console.log("The end date is: " +enddateNew);
+
+
+  function cbs(){
+    console.log("Done");
+  }
+
+  function surprise(cb) {
+    console.log("DOne");
+    (function loop() {
+      console.log("AM in");
+        var now = new Date();
+        if (dNew === enddateNew) {
+            cbs();
+            
+        }else{
+          console.log("Not correct wait another 6 sec");
+          now = new Date();                  // allow for time passing
+        var delay = 6000 - (now % 6000); // exact ms to next minute interval
+        setTimeout(loop, delay);
+        }
+        
+    })();
+}
+
+  surprise("lol");
+
+
+
+
+
+
   res.render("ui-pages/sign-in");
 })
+
+
 
 app.get("/dashboard", (req,res)=>{
   if(req.isAuthenticated()){
@@ -328,10 +437,17 @@ app.post("/viewmap", async (req,res)=>{
 
 
 app.get("/all-users", async (req,res)=>{
+  if(req.isAuthenticated()){
+    
   await User.find({}).then((found)=>{
     res.render("ui-pages/all-users", {userfound:found});
   })
+  }else{
+    res.redirect("/");
+  }
 })
+
+
 
 
 var countriesout = ["Mtn","Glo","Indomie","Etisalat", "Airtel","GTBank","Jumia"];

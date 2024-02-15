@@ -50,7 +50,7 @@
                       <% var p_sum = p_amount.reduce((a, b) => a + b, 0); %>
                       <% var pend = sum - p_sum; %>
                       <!-- ₦<%=sum.toLocaleString('en-US')%> -->
-                      ₦<%= p_sum.toLocaleString('en-US')%>
+                      ₦<%= pend.toLocaleString('en-US')%>
                       <span class="text-success text-sm font-weight-bolder">+3%</span>
                     </h5>
                   </div>

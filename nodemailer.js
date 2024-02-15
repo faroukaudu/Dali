@@ -33,14 +33,14 @@ async function emailSent({sendTo:to, title:subject, message:msg, template:html, 
 
 
   const mail2Send = {
-    from:"SureReal <noreply.surerealintegratedserviceltd@gmail.com>",
+    from:"Outreach Media LTD <noreply.surerealintegratedserviceltd@gmail.com>",
     replyTo: 'noreply.surerealintegratedserviceltd@gmail.com',
     to: to,
     subject:subject,
     text:msg,
     //text:"Click this link to reset your password.."+ " " +"https://localhost:2000/pwdtoken/"+msg,
     // text:"Click this link to reset your password.."+ " " +"https://stingray-app-lgdmb.ondigitalocean.app/pwdtoken/",
-    // html:html 
+    html:html 
   };
 
   transporter.sendMail(mail2Send, function(err, info){
