@@ -1,12 +1,17 @@
 const { result } = require("lodash");
 const myapp = require("./index.js");
+// var locationschema = require(__dirname + '/db/locations.js');
+// var adschema = require(__dirname + '/db/ads.js');
+
 
 
 app = myapp.main;
 CampDB = myapp.Campaign;
+LocationDb = myapp.LocationDb;
+freeBoard = myapp.freeUpBoard;
 
 
-app.get("/update", (req,res)=>{
+app.get("/update", (req,res)=>{res
     res.send("getting now");
 })
 
@@ -36,7 +41,13 @@ app.post("/update", async (req,res)=>{
     structure:req.body.structure,
     address: req.body.address,
     cut:newCut,
-    ispaid:newIsPaid
+    ispaid:newIsPaid,
+    startdate:req.body.start,
+    end_date:req.body.end,
+    dur_week:req.body.dWeek,
+    dur_month:req.body.dMonth,
+
+
     
     };
 
@@ -55,15 +66,27 @@ app.get("/delete", (req,res)=>{
 })
 
 app.post("/delete", async (req,res)=>{
+    
     await CampDB.findByIdAndRemove({_id:req.body.delete_camp}).then((result)=>{
         res.render("animation/delete");
+        freeBoard(result.locationID);
         
     }).catch((err)=>{
         res.send("this is an error" + err);
     })
 })
 
+function vacantBoard (){
+    console.log("Vacant board sections");
+    // CampDB.find({}).then((result))
+}
 
+
+
+
+
+
+module.exports = {vacantBoard};
 
 
 

@@ -13,7 +13,8 @@ address: String,
 latitude:String,
 longitude:String,
 structure:String,
-state:String
+state:String,
+vacant:Boolean,
 
 },
 {timestamps: true}

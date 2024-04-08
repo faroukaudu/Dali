@@ -172,18 +172,18 @@
                       <h6 class="mb-3 text-sm">Duration</h6>
                       <span class="mb-2 text-xs">Started: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="text-dark font-weight-bold ms-sm-2">
-                        <input type="text" value="<%= info.startdate %>" disabled>
+                        <input type="text" name="start" value="<%= info.startdate %>" >
                       </span></span>
                       <span class="mb-2 text-xs">End Date: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <span class="text-dark ms-sm-2 font-weight-bold">
-                        <input type="text" value="<%= info.end_date%>" style="width: 150px;"disabled>
+                        <input type="text" name="end" value="<%= info.end_date%>" style="width: 150px;">
                       </span></span>
                       <span class="text-xs">Duration/weeks: &nbsp;&nbsp;
                         <span class="text-dark ms-sm-2 font-weight-bold">
-                        <input type="text" value="<%= info.dur_week%>"disabled>
+                        <input type="text" name="dWeek" value="<%= info.dur_week%>">
                       </span></span>
                         <span class="text-xs">Duration/Months: <span class="text-dark ms-sm-2 font-weight-bold">
-                          <input type="text" value="<%= info.dur_month%>" disabled></span></span>
+                          <input type="text" name="dMonth" value="<%= info.dur_month%>" ></span></span>
                     </div>
                     
                   </li>

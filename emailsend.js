@@ -2,19 +2,20 @@ const sendingMails = require('./nodemailer.js');
 const handlebars = require("handlebars");
 const fs = require('fs');
 
-function campReminder({username:name, email:email, endDate:end}){
+async function campReminder({username:name, email:email, endDate:end, clientName:client}){
     console.log("Senidng mail to: "+ email +"& Name is"+ name);
     const source = fs.readFileSync('email_template.html', 'utf-8').toString();
     const template = handlebars.compile(source);
     const replacements = {
         username: name,
-        expire_date: end
+        expire_date: end,
+        client_name:client
     };
 
     const htmlToSend = template(replacements);
 
     try {
-        sendingMails.emailSent({sendTo:email, title:"Signpost Expiration Remainder",
+        await sendingMails.emailSent({sendTo:email, title:"Signpost Expiration Remainder",
     message:"We are testing this mail", template:htmlToSend, emailType:"registration successful"});
     } catch (err) {
         res.send(err);

@@ -31,7 +31,7 @@ app.post("/locate", (req,res)=>{
             // console.log(body);
             // res.send(body);
             res.render("ui-pages/add-site",{locations:body.results, phyAdd:req.body.phyAddress,
-                structure:req.body.structure, state:req.body.state});
+                structure:req.body.structure, state:req.body.state, vacant:true});
             // console.log(body.results);
         });
 
@@ -66,7 +66,9 @@ app.post("/savelocation", (req,res)=>{
         address:req.body.phyadd,
         structure:req.body.structure,
         latitude:req.body.latitude,
-        longitude:req.body.longitude}).then((save)=>{
+        longitude:req.body.longitude,
+        vacant:true,
+    }).then((save)=>{
 
             res.render("animation/save-location");
         }).catch((err)=>{
@@ -102,4 +104,29 @@ app.get("/vr", async(req,res)=>{
     }).catch((err)=>{
         res.send(err);
     })
+  })
+
+
+  app.post("/filter-location", (req,res)=>{
+    console.log(req.body.structure);
+    if(req.body.structure === "none"){
+        LocationDB.find({state:req.body.state}).then((locFilter)=>{
+            var details = req.body.state;
+            res.render("ui-pages/filter-loc", {locations:locFilter, detail:details})
+    
+        }).catch((err)=>{
+            res.send(err);
+        })
+
+    }else{
+        LocationDB.find({state:req.body.state, structure:req.body.structure}).then((locFilter)=>{
+            var details = req.body.state+ " > " +req.body.structure;
+            res.render("ui-pages/filter-loc", {locations:locFilter, detail:details});
+    
+        }).catch((err)=>{
+            res.send(err);
+        })
+
+    }
+
   })

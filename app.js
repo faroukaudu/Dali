@@ -2,6 +2,7 @@ const myModule = require('./index.js');
 const myModule2 = require('./users.js');
 const appadmin = require('./update.js');
 const appadmin2 = require('./adduser.js');
+const vacancy = require('./vacancy.js');
 
 const apiMap = require('./apimap.js');
 // const front = require('./front.js');

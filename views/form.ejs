@@ -76,32 +76,32 @@
     <title>Add Adverts</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="assets-form/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets-form/css/bootstrap.min.css">
 
     <!-- External Css -->
-    <link rel="stylesheet" href="assets-form/css/line-awesome.min.css">
+    <link rel="stylesheet" href="/assets-form/css/line-awesome.min.css">
 
     <!-- Custom Css -->
-    <link rel="stylesheet" type="text/css" href="assets-form/css/main.css">
-    <link rel="stylesheet" type="text/css" href="assets-form/css/kyc-2.css">
+    <link rel="stylesheet" type="text/css" href="/assets-form/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/assets-form/css/kyc-2.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Favicon -->
-    <link rel="icon" href="assets-form/images/favicon.png">
-    <link rel="apple-touch-icon" href="assets-form/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="assets-form/images/icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="assets-form/images/icon-114x114.png">
+    <link rel="icon" href="/assets-form/images/favicon.png">
+    <link rel="apple-touch-icon" href="/assets-form/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/assets-form/images/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/assets-form/images/icon-114x114.png">
     <!-- CALENDER STYLE -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
 
     
-    <link rel="stylesheet" href="assets-calendar/fonts/icomoon/style.css">
+    <link rel="stylesheet" href="/assets-calendar/fonts/icomoon/style.css">
 
-    <link rel="stylesheet" href="assets-calendar/css/rome.css">
+    <link rel="stylesheet" href="/assets-calendar/css/rome.css">
     
     <!-- Bootstrap CSS -->
     <!-- <link rel="stylesheet" href="assets-calendar/css/bootstrap.min.css"> -->
@@ -115,7 +115,10 @@
   <body>
     <script>
       // var test = ["farouk","musa","fadila"];
-      var test =  '<%= location%>';
+      
+      
+        var test = '<%= location%>'
+      
       var test2 = "hold me";
     </script>
 
@@ -133,7 +136,7 @@
           <div class="col-lg-8 offset-lg-2">
             <div class="navigation">
               <div class="logo">
-                <a href="../index.html"><img src="assets-form/images/logo-dark.png" class="img-fluid" alt=""><span>KYC</span></a>
+                <a href="../index.html"><img src="/assets-form/images/logo-dark.png" class="img-fluid" alt=""><span>KYC</span></a>
               </div>
               <div class="nav-btns">
                 <a href="../index.html" class="back"><span class="text">Back to Main</span> Demo</a>
@@ -151,21 +154,21 @@
           <div class="col-lg-8 offset-lg-2 p-sm-0">
             <div class="ugf-form">
               <form action="/form" method="post">
-                <input type="hidden" name="oName" value="<%= user%>">
+                <input type="hidden" name="oName" value="<%= user.fullname%>">
                 <div class="input-block">
                   <h4>New Campaign</h4>
                   <div class="row">
                     
                     <div class="col-md-6 p-sm-0">
                       <div class="form-group">
-                        <label for="inputFname">Client Name</label>
-                        <input name="cClient" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required>
+                        <label for="inputFname">Campaign Name</label>
+                        <input name="cClient" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required >
                         </div>
                     </div>
                     <div class="col-md-6 p-sm-0">
                       <div class="form-group">
-                        <label for="inputFname">Client Email</label>
-                        <input name="cMail" type="text" class="form-control" id="inputFname" placeholder="e.g. Robert" required>
+                        <label for="inputFname">Agent Email</label>
+                        <input name="cMail" type="text" class="form-control" value="<%= user.email%>" id="inputFname" placeholder="e.g. Robert" required>
                         </div>
                     </div>
                     <div class="col-md-6 p-sm-0">
@@ -298,12 +301,23 @@
                       </div>
                     </div>
                    
-                    <div class="col-md-12 p-sm-0 ui-widget">
+                    <% if(rule === "vacant location"){ %>
+                      <div class="col-md-12 p-sm-0 ui-widget">
                       <div class="form-group autocomplete">
                         <label for="myInput">Site State & Address</label>
-                        <input name="addr" type="text" class="form-control" id="myInput" placeholder="e.g. Mtn" required>
+                        <input style="background-color: rgb(68, 205, 68); color: #ffffff;" name="addr" value="<%= location%>" type="text" class="form-control" placeholder="e.g. Kano" required>
                       </div>
-                    </div>    
+                    </div>  
+
+                    <% }else{ %>
+                      <div class="col-md-12 p-sm-0 ui-widget">
+                        <div class="form-group autocomplete">
+                          <label for="myInput">Site State & Address</label>
+                          <input name="addr" type="text" class="form-control" id="myInput" placeholder="e.g. Kano" required>
+                        </div>
+                      </div>  
+
+                    <% }  %>   
 
                     
 
@@ -489,6 +503,7 @@
                   </div>
                 </div> -->
                 <button type="submit" class="btn">Submit Documents</button>
+                
               </form>
             </div>
           </div>
@@ -497,24 +512,24 @@
     </div>
 
     <!-- Calander start -->
-    <script src="assets-calendar/js/jquery-3.3.1.min.js"></script>
-    <script src="assets-calendar/js/popper.min.js"></script>
-    <script src="assets-calendar/js/bootstrap.min.js"></script>
-    <script src="assets-calendar/js/rome.js"></script>
+    <script src="/assets-calendar/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets-calendar/js/popper.min.js"></script>
+    <script src="/assets-calendar/js/bootstrap.min.js"></script>
+    <script src="/assets-calendar/js/rome.js"></script>
 
-    <script src="assets-calendar/js/main.js"></script>
+    <script src="/assets-calendar/js/main.js"></script>
     <!-- Calender end -->
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="assets-form/js/jquery.min.js"></script>
-    <script src="assets-form/js/popper.min.js"></script>
-    <script src="assets-form/js/bootstrap.min.js"></script>
+    <script src="/assets-form/js/jquery.min.js"></script>
+    <script src="/assets-form/js/popper.min.js"></script>
+    <script src="/assets-form/js/bootstrap.min.js"></script>
 
     <!-- <script src="../assets-form/js/owl.carousel.min.js"></script> -->
     <!-- <script src="../assets-form/js/countrySelect.min.js"></script> -->
 
-    <script src="assets-form/js/custom.js"></script>
-    <script src="assets-form/js/autocomplete.js"></script>
+    <script src="/assets-form/js/custom.js"></script>
+    <script src="/assets-form/js/autocomplete.js"></script>
   </body>
 </html>

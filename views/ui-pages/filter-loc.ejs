@@ -55,10 +55,11 @@
       </div>
       <div class="col-xl-4 col-sm-5 mb-xl-0 mb-4">
         <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+          
           <div class="input-group">
             <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
             <select id="dropdown" class="form-control" style="height: 40px;" name="structure" required>
-              <option value="none" selected disabled>--Choose Structure--</option>
+              <option value="none" selected >--Choose Structure--</option>
               <option value="48 Sheet">48 Sheet</option>
               <option value="Unipole 2 Sided">Unipole 2-Sided</option>
               <option value="Unipole 3 Sided">Unipole 3-Sided</option>
@@ -77,7 +78,7 @@
         </div>
       </div>
       <div class="col-xl-2 col-sm-5 mb-xl-0 mb-4">
-        <button type="submit" class="btn bg-gradient-info">Find</button>
+        <button type="submit" class="btn bg-gradient-info">Find  &nbsp; <i class="fas fa-search" aria-hidden="true"></i></button>
       </div>
       <div  class="col-xl-2 col-sm-5 mb-xl-0 mb-4"> 
         <a href="/list-location"><i class=" fa fa-arrow-right" style="font-size: small;"> Reset</i></a>
@@ -87,129 +88,142 @@
  
 </div>
 <div class="container-fluid py-4">
+  
   <div class="row">
+    
     <div class="col-12">
+      
       <div class="card mb-4">
-        <div class="card-header pb-0">
+        <% if(locations.length !== 0){ %>
+          <div class="card-header pb-0">
           
-          <h6>Signboard Locations</h6>
-          <p style="font-size: small;">All Locations</p>
-        </div>
-        <div class="card-body px-0 pt-0 pb-2">
-          <div class="table-responsive p-0">
-            <table class="table align-items-center mb-0">
-              <thead>
-                <tr>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">State</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Structure</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lat/Long</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> Board Status</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
-                  
-                  
-                </tr>
-              </thead>
-              <tbody>
-
-                <!-- DATABASE TABLE -->
-                <% site.forEach(function(item){ %>
+            <h6>All Signboard Locations </h6>
+            <p style="font-size: small;"><%= detail%></p>
+          </div>
+          <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
                   <tr>
-                    <td>
-                      
-                        
-                        <!-- Camp and opp name -->
-                        
-                          <h6 class="mb-0 text-sm"><%=item.state%></h6>
-                          
-                        
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">State</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Structure</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lat/Long</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"> Board Status</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
                     
-                    </td>
-                  
-                      <!-- States -->
-                      
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0"><%= item.address%>...</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle ">
-                      <span class="text-secondary text-xs font-weight-bold"><%=item.structure%></span>
-                    </td>
-
-                    <td class="">
-                      <span class="text-secondary text-xs font-weight-bold"><%=item.latitude + " / " + item.longitude%></span>
-                    </td>
-
-                    <form action="/viewmap" method="post">
-                      <input type="hidden" name="mapstate" value="<%=item.state%>">
-                      <input type="hidden" name="mapaddress" value="<%=item.address%>">
-                      <input type="hidden" name="mapstructure" value="<%=item.structure%>">
-                      <input type="hidden" name="maplat" value="<%=item.latitude%>">
-                      <input type="hidden" name="maplong" value="<%=item.longitude%>">
-                      <% if (item.vacant == true){ %>
-                        <td class="align-middle  text-sm">
-                        <span class="badge badge-sm bg-gradient-success"><div title="Signboard Available">Vacant</div></span>
-                      </td>
-                      <% }else{ %>
-                        <td class="align-middle  text-sm">
-                          <span class="badge badge-sm bg-gradient-secondary"><div title="Not Available">Occupied</div></span>
-                        </td>
-                      <% }%>
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
-                          <input type="hidden" name="ads_id" value="<%= item._id %>">
-                          
-                          
-                          <button type="submit" class="plain-bt">View Map</button>
-                        </a>
-                      </td>
-                    </form>
-                    <form action="/locationAds" method="post">
-                      <% if (item.vacant == true){ %>
-                        <td class="align-middle">
-                          
-                          
-                            <input type="hidden" name="loc_id" value="<%= item._id %>">
-                            <a href="/form/<%= item._id%>" type="" class="plain-bt text-secondary font-weight-bold text-xs" ><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Use</a>
-                          
-                        </td>
-                       
-                      <% }else{ %>
-                        <td class="align-middle">
-                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
-                            <input type="hidden" name="loc" value="<%= item._id %>">
-                            <button type="submit" class="plain-bt"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Details</button>
-                          </a>
-                        </td>
-                        
-                      <% }%>
-                      
-
-                    </form>
-                   
-            
-                    
-                  
-                    <form action="/delete-loc" method="post">
-                      <td class="align-middle">
-                        <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
-                          <input type="hidden" name="loc_id" value="<%= item._id %>">
-                          <button type="submit" class="plain-bt"><i class="fas fa-trash text-dark me-2" aria-hidden="true"></i>delete</button>
-                        </a>
-                      </td>
-
-                    </form>  
-                    <!-- onclick="this.form.submit()" -->
-                    <!-- <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a> -->
                     
                   </tr>
-                <% }); %>
-                <!-- DATABASE TABLE END -->
-
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+  
+                  <!-- DATABASE TABLE -->
+                  <% locations.forEach(function(item){ %>
+                    <tr>
+                      <td>
+                        
+                          
+                          <!-- Camp and opp name -->
+                          
+                            <h6 class="mb-0 text-sm"><%=item.state%></h6>
+                            
+                          
+                      
+                      </td>
+                    
+                        <!-- States -->
+                        
+                      <td>
+                        <p class="text-xs font-weight-bold mb-0"><%= item.address%>...</p>
+                        <p class="text-xs text-secondary mb-0">Developer</p>
+                      </td>
+                      <td class="align-middle ">
+                        <span class="text-secondary text-xs font-weight-bold"><%=item.structure%></span>
+                      </td>
+  
+                      <td class="">
+                        <span class="text-secondary text-xs font-weight-bold"><%=item.latitude + " / " + item.longitude%></span>
+                      </td>
+  
+                      <form action="/viewmap" method="post">
+                        <input type="hidden" name="mapstate" value="<%=item.state%>">
+                        <input type="hidden" name="mapaddress" value="<%=item.address%>">
+                        <input type="hidden" name="mapstructure" value="<%=item.structure%>">
+                        <input type="hidden" name="maplat" value="<%=item.latitude%>">
+                        <input type="hidden" name="maplong" value="<%=item.longitude%>">
+                        <% if (item.vacant == true){ %>
+                          <td class="align-middle  text-sm">
+                          <span class="badge badge-sm bg-gradient-success"><div title="SHow Me">Vacant</div></span>
+                        </td>
+                        <% }else{ %>
+                          <td class="align-middle  text-sm">
+                            <span class="badge badge-sm bg-gradient-secondary">Occupied</span>
+                          </td>
+                        <% }%>
+                        <td class="align-middle">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
+                            <input type="hidden" name="ads_id" value="<%= item._id %>">
+                            
+                            
+                            <button type="submit" class="plain-bt">View Map</button>
+                          </a>
+                        </td>
+                      </form>
+                      <form action="/locationAds" method="post">
+                        <% if (item.vacant == true){ %>
+                          <td class="align-middle">
+                            <a href="/form" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
+                              <input type="hidden" name="loc" value="<%= item._id %>">
+                              <button type="submit" class="plain-bt"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Use</button>
+                            </a>
+                          </td>
+                         
+                        <% }else{ %>
+                          <td class="align-middle">
+                            <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
+                              <input type="hidden" name="loc_id" value="<%= item._id %>">
+                              <button type="submit" class="plain-bt"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Details</button>
+                            </a>
+                          </td>
+                          
+                        <% }%>
+                        
+  
+                      </form>  
+                     
+              
+                      
+                    
+                      <form action="/delete-loc" method="post">
+                        <td class="align-middle">
+                          <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user" >
+                            <input type="hidden" name="loc_id" value="<%= item._id %>">
+                            <button type="submit" class="plain-bt"><i class="fas fa-trash text-dark me-2" aria-hidden="true"></i>delete</button>
+                          </a>
+                        </td>
+  
+                      </form>  
+                      <!-- onclick="this.form.submit()" -->
+                      <!-- <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a> -->
+                      
+                    </tr>
+                  <% }); %>
+                  <!-- DATABASE TABLE END -->
+  
+                </tbody>
+              </table>
+            </div>
           </div>
-        </div>
+        <% }else{ %>
+          <div class="card-header pb-0">
+          
+            <h6>No Records found for your Selection</h6>
+            <p>Pick another location.</p>
+          </div>
+        <% } %>
+      
+        
+        
       </div>
     </div>
   </div>
