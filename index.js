@@ -53,8 +53,8 @@ app.use(passport.session());
 
 
 
-const uri = "mongodb://127.0.0.1:27017/surreal";
-// const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
+// const uri = "mongodb://127.0.0.1:27017/surreal";
+const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
 database().catch(err => console.log(err));
 
 
