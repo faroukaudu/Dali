@@ -216,7 +216,7 @@ fiftyone:["TARABA", "JALINGO, Hammaurwa Way by Old Taraba State Transport Co-ope
 // -_-__--____-__-_-_______________------------------------______________________----------------------------_______________________---------------------_________________________
 // FOR SMALL BOARDS
 const smallBoardInfo = {one:["Abuja","Suleja,Abuja Expressway by Madalla Market (Close & Far Range)", "48 SUPER", "3M X 6M",
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.453460421996!2d7.214492774008316!3d9.113449690951294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e79bff3d3f1a7%3A0xb169dc8d9488655e!2sMadalla%20Market!5e0!3m2!1sen!2sng!4v1719769466679!5m2!1sen!2sng", 
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63009.60716210091!2d12.425935800467446!3d9.235313503478906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10fc6b286fd7b635%3A0xd9ef668469028f23!2sMohammed%20mustapha!5e0!3m2!1sen!2sng!4v1719811326100!5m2!1sen!2sng", 
     "super/1a.jpg","super/1b.jpg"
 ],
 two:["Abuja","Kuja Market Road by Total Filling Station (Close & Far Range)" , "48 SUPER", "3M X 6M",
@@ -623,10 +623,6 @@ hundred:["KEBBI","Ahmadu Bello Way by Total Filling Station  (Close & Far Range)
     "super/100a.jpg","super/100b.jpg"
 ],
 }
-
-
-
-
 
 
 
