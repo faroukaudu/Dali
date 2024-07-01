@@ -9,3 +9,5 @@ function vacancyBoard (){
 
 
 exports.vacancyBoard = vacancyBoard;
+
+

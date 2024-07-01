@@ -53,8 +53,8 @@ app.use(passport.session());
 
 
 
-// const uri = "mongodb://127.0.0.1:27017/surreal";
-const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
+const uri = "mongodb://127.0.0.1:27017/surreal";
+// const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
 database().catch(err => console.log(err));
 
 
@@ -75,7 +75,7 @@ async function database() {
         console.log(user.id);
           return cb(null, user.id)
       })
-  })
+  });
   
   passport.deserializeUser(function (id, cb) {
     console.log("trying to GET" + id);
@@ -515,7 +515,7 @@ if(req.isAuthenticated()){
   console.log(err);
   })
 }else{
-  res.redirect("/login");
+  res.redirect("/login"); 
 }
 });
 

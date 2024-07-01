@@ -1,4 +1,5 @@
 <%- include("included/header",{user_Info:"userInfo"}); -%>
+<script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 <div style="margin: auto;">
 
  
@@ -170,7 +171,43 @@
                           
                           
                             <input type="hidden" name="loc_id" value="<%= item._id %>">
-                            <a href="/form/<%= item._id%>" type="" class="plain-bt text-secondary font-weight-bold text-xs" ><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Use</a>
+                            <% if(item.structure === "Unipole 2 Sided"){ %>
+                              
+                                <div class="col-lg-6 col-5 my-auto text-end">
+                                <div class="dropdown ">
+                                  <!-- <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v text-secondary"> </i>
+                                  </a> -->
+                                  <a href="" type="" class="plain-bt text-secondary font-weight-bold text-xs cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Use 2 sided</a>
+                                  <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                                    <!-- <li><a class="dropdown-item border-radius-md" href="/sideq">Action</a></li> -->
+                                   <!-- CONTINUE A CODE HEHRE -->
+                                    <!-- if(item.) -->
+                                  </ul>
+                                </div>
+                              </div>
+                            
+                            <% }else if(item.structure === "Unipole 3 Sided"){ %>
+                              <!-- <div class="dropdown float-lg-end pe-4"> -->
+                              <div class="dropdown ">
+                        
+                        
+                          
+                                <!-- <a class="cursor-pointer btn btn-link text-secondary mb-0" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                                  <i class="fa fa-ellipsis-v text-xs"></i>
+                                </a> -->
+                                <a href="/form/<%= item._id%>" type="" class="plain-bt text-secondary font-weight-bold text-xs cursor-pointer" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Use 3 sided</a>
+                                <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Side One</a></li>
+                                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Side Two</a></li>
+                                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Side Three</a></li>
+                                </ul>
+                              
+                            
+                              </td>
+                            <% }else{ %>
+                              <a href="/form/<%= item._id%>" type="" class="plain-bt text-secondary font-weight-bold text-xs" ><i class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Use</a>
+                            <% } %>
                           
                         </td>
                        
@@ -204,6 +241,27 @@
                     
                   </tr>
                 <% }); %>
+                <tr>
+                  <td>Lagos</td>
+                  <td>I dont</td>
+                  <td>2 sided</td>
+                  <td>11111111? 11111111</td>
+                  <td>Some</td>
+                  <td>
+                    <div class="col-lg-6 col-5 my-auto text-end">
+                    <div class="dropdown float-lg-end pe-4">
+                      <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-ellipsis-v text-secondary"></i>
+                      </a>
+                      <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
+                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
+                        <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </td>
+                </tr>
                 <!-- DATABASE TABLE END -->
 
               </tbody>
@@ -315,10 +373,10 @@
     </div>
   </div>
   <!--   Core JS Files   -->
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="assets-ui/js/core/popper.min.js"></script>
+  <script src="assets-ui/js/core/bootstrap.min.js"></script>
+  <script src="assets-ui/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="assets-ui/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

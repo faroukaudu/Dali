@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Carousel 03</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+					
+						<h1 class="heading-section mb-5" style="color: brown; font-size:40px; font-weight: 800;">Outreach Media Limited</h1>
+						<div style="font-size: 15px; line-height: 25px;"  >
+							<p><b>STATE </b>:<%=info[0]%> </p>
+							<p><b>SITE Address :</b><%=info[1]%> </p>
+							<p><b>STRUCTURE </b>:<%= info[2]%> </p>
+							<p><b>SIZE:</b> <%= info[3]%></p>
+						</div>
+
+						<table>
+
+
+					</div>
+
+
+
+					
+					
+					<div class="col-md-12">
+						<div class="featured-carousel owl-carousel">
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-end justify-content-center" style="background-image:  url(images/<%= info[5]%>);">
+										<div class="text w-100">
+											<span class="cat" style="color: black; font-weight: 700;"><%= info[3]%></span>
+											<h3><a href="#"><%= info[2]%></a></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-end justify-content-center" style="background-image: url(images/<%= info[6]%>);">
+										<div class="text w-100">
+											<span class="cat" style="color: black; font-weight: 700;"><%= info[3]%></span>
+											<h3><a href="#"><%= info[2]%></a></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-end justify-content-center" style="background-image:  url(images/<%= info[7]%>);">
+										<div class="text w-100">
+											<span class="cat" style="color: black; font-weight: 700;"><%= info[3]%></span>
+											<h3><a href="#"><%= info[2]%></a></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-end justify-content-center" style="background-image: url(images/<%= info[8]%>);">
+										<div class="text w-100">
+											<span class="cat" style="color: black; font-weight: 700;"><%= info[3]%></span>
+											<h3><a href="#"><%= info[2]%></a></h3>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="item">
+								<div class="work">
+									<div class="img d-flex align-items-end justify-content-center" style="background-image: url(images/work-5.jpg);">
+										<div class="text w-100">
+											<span class="cat">Web Design</span>
+											<h3><a href="#">Working Spaces for Startups Freelancer</a></h3>
+										</div>
+									</div>
+								</div>
+							</div> -->
+						</div>
+					</div>
+
+				</div>
+				<div style="padding: 20px;">
+					<iframe src="<%= info[4]%>" width="100%" height="450" style="border:0;" 
+					allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+				</div>
+			</div>
+		</section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

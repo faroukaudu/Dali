@@ -61,6 +61,7 @@ app.post("/mapshow", (req,res)=>{
 
 app.post("/savelocation", (req,res)=>{
     console.log(req.body.state);
+if(req.body.structure === "Unipole 3 Sided"){
     LocationDB.create({
         state:req.body.state,
         address:req.body.phyadd,
@@ -68,12 +69,38 @@ app.post("/savelocation", (req,res)=>{
         latitude:req.body.latitude,
         longitude:req.body.longitude,
         vacant:true,
+        side1:"free",
+        side2:"free",
+        side3:"free"
+        
+        
     }).then((save)=>{
 
             res.render("animation/save-location");
         }).catch((err)=>{
             res.send(err);
         })
+}else if (req.body.structure === "Unipole 2 Sided"){
+
+}else{
+    LocationDB.create({
+        state:req.body.state,
+        address:req.body.phyadd,
+        structure:req.body.structure,
+        latitude:req.body.latitude,
+        longitude:req.body.longitude,
+        vacant:true,
+        side1:"free",
+        side2:"free",
+        
+        
+    }).then((save)=>{
+
+            res.render("animation/save-location");
+        }).catch((err)=>{
+            res.send(err);
+        })
+}
 
 });
 

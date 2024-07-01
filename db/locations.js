@@ -15,6 +15,10 @@ longitude:String,
 structure:String,
 state:String,
 vacant:Boolean,
+// Adding Sides
+side1:String,
+side2:String,
+side3:String,
 
 },
 {timestamps: true}

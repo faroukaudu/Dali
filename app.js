@@ -3,6 +3,7 @@ const myModule2 = require('./users.js');
 const appadmin = require('./update.js');
 const appadmin2 = require('./adduser.js');
 const vacancy = require('./vacancy.js');
+const board = require('./info.js');
 
 const apiMap = require('./apimap.js');
 // const front = require('./front.js');

@@ -47,8 +47,6 @@ app.post("/update", async (req,res)=>{
     dur_week:req.body.dWeek,
     dur_month:req.body.dMonth,
 
-
-    
     };
 
  CampDB.findOneAndUpdate({_id:req.body.camp_id}, updateInfo).then((camp)=>{
