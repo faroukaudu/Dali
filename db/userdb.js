@@ -18,6 +18,7 @@ active:Boolean,
 );
 
 userSchema.plugin(passportLocalMongoose , {selectFields: "username password"});
+// userSchema.plugin(passportLocalMongoose);
 
 
 module.exports = userSchema;

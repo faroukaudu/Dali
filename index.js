@@ -35,13 +35,13 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 //setting Plugins for app 
 
-const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
+
 app.use(session({
   secret: process.env.SESSION,
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({
-    mongoUrl: uri,
+    mongoUrl: "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal",
     collectionName: 'sessions',
   }),
   cookie: { 
@@ -59,7 +59,7 @@ app.use(passport.session());
 
 
 // const uri = "mongodb://127.0.0.1:27017/surreal";
-
+const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
 database().catch(err => console.log(err));
 
 
@@ -78,6 +78,7 @@ async function database() {
       console.log("serializing user uwuss:" + JSON.stringify(user))
       process.nextTick(function() {
         console.log(user.id);
+        user.save();
           return cb(null, user.id)
       })
   });
@@ -441,8 +442,8 @@ app.get("/table", function(req, res){
 
 app.get("/", (req,res)=>{
   // console.log("TODAY DATE"+ vacancy());
-  notification();
-  vacancy();
+  // notification();
+  // vacancy();
 
 //   var enddate  = new dates.endDate(new Date(), 1, 2);
 //   enddate.setDate(enddate.getDate() + 0);
