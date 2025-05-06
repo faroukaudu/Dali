@@ -18,6 +18,7 @@ const passportLocalMongoose = require("passport-local-mongoose");
 require('dotenv').config();
 const remainderMail = require("./nodemailer.js");
 const sendReminder = require("./emailsend.js");
+const MongoStore = require('connect-mongo');
 // const vacantBoard = require("./vacancy.js");
 
 
@@ -34,11 +35,15 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 //setting Plugins for app 
 
-
+const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
 app.use(session({
   secret: process.env.SESSION,
   resave: false,
   saveUninitialized: false,
+  store: MongoStore.create({
+    mongoUrl: uri,
+    collectionName: 'sessions',
+  }),
   cookie: { 
       //Expire Session after 1min.
       maxAge: 60000000,
@@ -54,7 +59,7 @@ app.use(passport.session());
 
 
 // const uri = "mongodb://127.0.0.1:27017/surreal";
-const uri = "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
+
 database().catch(err => console.log(err));
 
 
@@ -343,7 +348,9 @@ app.post("/form", async function(req,res){
   console.log("new enddate is"+ newEnddate);
   console.log("ADDRESS: "+req.body.addr);
 
-  var locationID = req.body.addr.split(" <<ID=")[1];
+  var locationID = req.body.addr.split("<<ID=")[1];
+  console.log("this is the ID" + locationID);
+  
   // var info = siteVacancy(locationID);
  
   // console.log("This is my DB"+info);
@@ -358,7 +365,9 @@ app.post("/form", async function(req,res){
 // })
 // console.log("My New Info:"+ newinfos);
 
-  await  LocationDB.findById({_id:locationID}).then((siteFound)=>{
+  await LocationDB.findById({id:locationID}).then((siteFound)=>{
+    console.log(siteFound);
+    
     if(siteFound.vacant == true){
       siteFound.vacant = false;
     siteFound.save();
