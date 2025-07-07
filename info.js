@@ -7,7 +7,7 @@ const bigBoardInfo = {one:["Adamawa","YOLA, Mohammed Mustapha Way by Gate 4 Ultr
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63009.60716210091!2d12.425935800467446!3d9.235313503478906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10fc6b286fd7b635%3A0xd9ef668469028f23!2sMohammed%20mustapha!5e0!3m2!1sen!2sng!4v1719811326100!5m2!1sen!2sng", 
     "big/1a.png","big/1b.png","big/2a.png","big/2b.png"
 ],
-two: ["Adamawa","BAUCHI, Murtala Mohammed Way Beefore Abubakar Tafawa Balewa Stadium ftt Wunti Market (Close & Far Range)", "UNIPOLE", "4.4M X 12.4M",
+two: ["BAUCHI","BAUCHI, Murtala Mohammed Way Beefore Abubakar Tafawa Balewa Stadium ftt Wunti Market (Close & Far Range)", "UNIPOLE", "4.4M X 12.4M",
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7850.730553601027!2d9.82371067770996!3d10.312623699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1054d76ff4ccecc1%3A0x375f4a13611425d4!2sWunti%20market!5e0!3m2!1sen!2sng!4v1719705373900!5m2!1sen!2sng", 
     "big/3a.png","big/3b.png","big/4a.png","big/4b.png"
 ],
@@ -829,7 +829,7 @@ app.get("/super/:id",(req,res)=>{
     }else if(req.params.id==="87"){
         res.render("boards/super",{info:smallBoardInfo.eightyseven});
     }else if(req.params.id==="88"){
-        res.render("boards/super",{info:smallBoardInfo.thirtyeight});
+        res.render("boards/super",{info:smallBoardInfo.eightyeight});
     }else if(req.params.id==="89"){
         res.render("boards/super",{info:smallBoardInfo.eightynine});
     }else if(req.params.id==="90"){
@@ -916,7 +916,7 @@ app.get("/boards/:id",(req,res)=>{
     }else if(req.params.id==="25"){
         res.render("boards/index",{info:bigBoardInfo.twentyfive});
     }else if(req.params.id==="26"){
-        res.render("boards/index",{info:bigBoardInfo.thirtysix});
+        res.render("boards/index",{info:bigBoardInfo.twentysix});
     }else if(req.params.id==="27"){
         res.render("boards/index",{info:bigBoardInfo.twentyseven});
     }else if(req.params.id==="28"){
