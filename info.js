@@ -212,6 +212,28 @@ fiftyone:["TARABA", "JALINGO, Hammaurwa Way by Old Taraba State Transport Co-ope
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126112.16826782121!2d11.270699800804358!3d8.971661311573273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10f92a0b981f9447%3A0x652ba919985b5313!2sTSTC%20Office!5e0!3m2!1sen!2sng!4v1719713593126!5m2!1sen!2sng", 
     "big/93a.jpg","big/93b.jpg","big/94a.jpg","big/94b.jpg"
 ],
+
+fiftytwo:["Kano", "MARKET GATE;Sabon Gari Market by France road facing inside the market","GATE","1.5M x 6M",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.4115315702225!2d8.539896299999999!3d12.015164299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11ae813ff6be46d7%3A0x473eea1c5d3e42e1!2sSabon%20Gari%20Market!5e0!3m2!1sen!2sng!4v1752112562014!5m2!1sen!2sng",
+    "big/93a.jpg","big/95.jpg","big/95a.jpg","big/95a.jpg", 
+],
+
+fiftythree:["KADUNA", "Kaduna, Kachia Road by Kalapazine Barracks(Close & Far Range)","LAND SCAPE", "7.4M X 4.8M",
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125552.11111912975!2d7.276800043359381!3d10.460918899999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104d35925ce1e44b%3A0xea1ad5638bd3f2da!2sKalapanzi%20Barrack%20Nigerian%20Army!5e0!3m2!1sen!2sng!4v1752113718838!5m2!1sen!2sng",
+    "big/96a.png","big/96b.png", 
+],
+fiftyfour:["KADUNA","Ahmadu Bello Way by Bamaiyi OR Letco Building (Close & Far Range)","ROOF-TOP", "4.1M X 12.7M" ,
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15691.361079074466!2d7.412540993340421!3d10.513244164881952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104d355c4c3867a3%3A0x410402e61f4ca195!2sLetco%20Building%2C%20Ahmadu%20Bello%20Way%2C%20Kakuri%2C%20Kaduna%20800283%2C%20Kaduna!5e0!3m2!1sen!2sng!4v1752114359300!5m2!1sen!2sng",
+    "big/97a.png","big/97b.png", 
+],
+fiftyfive:["KADUNA","Ahmadu Bello Way by AJ Suleiman Building (Close & Far Range)","ROOF-TOP", "4.1M X 14.4M" ,
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.856980793099!2d7.427944473790676!3d10.511928864019266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b9db0cecc4f%3A0x14e12b8375503232!2sA%20J%20Suleiman%20%26%20Sons%20Nig%20Ltd!5e0!3m2!1sen!2sng!4v1752114482540!5m2!1sen!2sng",
+    "big/98a.png","big/98b.png", 
+],
+fiftysix:["KADUNA","Nnmadi Azikiwe Bye Pass by Askiloye Junction (Close & Far Range)","ROOF-TOP", "3.6M X 11M" ,
+   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105535.85318565664!2d7.297666926646749!3d10.579202695053132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11b2cbe9b63d9fa1%3A0x912cab3eb3f2b697!2sNnamdi%20Azikiwe%20Way%2C%20Industrial%20Area!5e0!3m2!1sen!2sng!4v1752114688492!5m2!1sen!2sng",
+    "big/99a.jpg","big/99b.jpg", 
+],
 }
 // -_-__--____-__-_-_______________------------------------______________________----------------------------_______________________---------------------_________________________
 // FOR SMALL BOARDS
@@ -967,7 +989,18 @@ app.get("/boards/:id",(req,res)=>{
         res.render("boards/index",{info:bigBoardInfo.fifty});
     }else if(req.params.id==="51"){
         res.render("boards/index",{info:bigBoardInfo.fiftyone});
+    }else if(req.params.id==="52"){
+        res.render("boards/index",{info:bigBoardInfo.fiftytwo});
+    }else if(req.params.id==="53"){
+        res.render("boards/index",{info:bigBoardInfo.fiftythree});
+    }else if(req.params.id==="54"){
+        res.render("boards/index",{info:bigBoardInfo.fiftyfour});
+    }else if(req.params.id==="55"){
+        res.render("boards/index",{info:bigBoardInfo.fiftyfive});
+    }else if(req.params.id==="56"){
+        res.render("boards/index",{info:bigBoardInfo.fiftysix});
     }
+
     
 });
 
