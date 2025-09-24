@@ -234,6 +234,21 @@ fiftysix:["KADUNA","Nnmadi Azikiwe Bye Pass by Askiloye Junction (Close & Far Ra
    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105535.85318565664!2d7.297666926646749!3d10.579202695053132!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11b2cbe9b63d9fa1%3A0x912cab3eb3f2b697!2sNnamdi%20Azikiwe%20Way%2C%20Industrial%20Area!5e0!3m2!1sen!2sng!4v1752114688492!5m2!1sen!2sng",
     "big/99a.jpg","big/99b.jpg", 
 ],
+
+fiftyseven:["KANO","Katsina Road by Kofar Ruwa Junction ftt Kofar Ruwa Market ","UNIPOLE", "3.6M X 11M" ,
+   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3902.2439280322915!2d8.494778310010876!3d12.026720834841262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11ae80b164c5a273%3A0xa1b3c29ea4080e80!2sKofar%20Ruwa%20Mkt%2C%20Kofar%20Danwawu%2C%20Kano%20700252%2C%20Kano!5e0!3m2!1sen!2sng!4v1758711329717!5m2!1sen!2sng",
+    "big/100a.jpg","big/100b.jpg", 
+],
+
+fiftyeight:["KANO","Along France Road by Galadima Road Junction(Close & Far Range)","ROOF-TOP", "4.2M X 12.8M" ,
+   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.511918944471!2d7.438411709991724!3d10.5390552634851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11b2b5f9697deddd%3A0xd3d098f0cd98d3b0!2sWestern%20Union!5e0!3m2!1sen!2sng!4v1758712601388!5m2!1sen!2sng",
+    "big/101a.jpg","big/101b.jpg", 
+],
+
+fiftynine:["KANO","France road by Kano Pillars Stadium (Close And Far Range).","EYE CATHER", "3M X 15M" ,
+   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.511918944471!2d7.438411709991724!3d10.5390552634851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11b2b5f9697deddd%3A0xd3d098f0cd98d3b0!2sWestern%20Union!5e0!3m2!1sen!2sng!4v1758712601388!5m2!1sen!2sng",
+    "big/102a.jpg","big/102b.jpg","big/102C.png","big/102d.png", 
+],
 }
 // -_-__--____-__-_-_______________------------------------______________________----------------------------_______________________---------------------_________________________
 // FOR SMALL BOARDS
@@ -651,9 +666,6 @@ hundred:["KEBBI","Ahmadu Bello Way by Total Filling Station  (Close & Far Range)
 
 
 
-
-
-
 {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63009.60716210091!2d12.425935800467446!3d9.235313503478906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10fc6b286fd7b635%3A0xd9ef668469028f23!2sMohammed%20mustapha!5e0!3m2!1sen!2sng!4v1719811326100!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
  */}
 
@@ -999,6 +1011,12 @@ app.get("/boards/:id",(req,res)=>{
         res.render("boards/index",{info:bigBoardInfo.fiftyfive});
     }else if(req.params.id==="56"){
         res.render("boards/index",{info:bigBoardInfo.fiftysix});
+    }else if(req.params.id==="57"){
+        res.render("boards/index",{info:bigBoardInfo.fiftyseven});
+    }else if(req.params.id==="58"){
+        res.render("boards/index",{info:bigBoardInfo.fiftyeight});
+    }else if(req.params.id==="59"){
+        res.render("boards/index",{info:bigBoardInfo.fiftynine});
     }
 
     
