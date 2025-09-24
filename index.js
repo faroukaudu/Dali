@@ -40,10 +40,10 @@ app.use(session({
   secret: process.env.SESSION,
   resave: false,
   saveUninitialized: false,
-  // store: MongoStore.create({
-  //   mongoUrl: "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal",
-  //   collectionName: 'sessions',
-  // }),
+  store: MongoStore.create({
+    mongoUrl: "mongodb+srv://fadeelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal",
+    collectionName: 'sessions',
+  }),
   cookie: { 
       //Expire Session after 1min.
       maxAge: 60000000,
@@ -58,8 +58,8 @@ app.use(passport.session());
 
 
 
-const uri = "mongodb://127.0.0.1:27017/surreal";
-// const uri = "mongodb+srv://fadecelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
+// const uri = "mongodb://127.0.0.1:27017/surreal";
+const uri = "mongodb+srv://fadecelahfancy98com:"+process.env.DBPASSWORD+"@dali.qnwfc9y.mongodb.net/surreal";
 database().catch(err => console.log(err));
 
 
