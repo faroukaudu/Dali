@@ -245,9 +245,13 @@ fiftyeight:["KANO","Along France Road by Galadima Road Junction(Close & Far Rang
     "big/101a.jpg","big/101b.jpg", 
 ],
 
-fiftynine:["KANO","France road by Kano Pillars Stadium (Close And Far Range).","EYE CATHER", "3M X 15M" ,
+fiftynine:["KANO","France road by Kano Pillars Stadium (Close And Far Range).","EYE CATCHER", "3M X 15M" ,
    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.511918944471!2d7.438411709991724!3d10.5390552634851!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x11b2b5f9697deddd%3A0xd3d098f0cd98d3b0!2sWestern%20Union!5e0!3m2!1sen!2sng!4v1758712601388!5m2!1sen!2sng",
     "big/102a.jpg","big/102b.jpg","big/102C.png","big/102d.png", 
+],
+sixty:["KADUNA","Kachia  Road by  Queen Amina College ftt/ftf Railway Market(Close & Far Range)","EYE CATHER", "3M X 15M" ,
+   "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3923.136047312719!2d7.413963739960009!3d10.489939837813514!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104d35750ec587cd%3A0xbf3eb22ca9f1a061!2sQueen%20Amina%20College!5e0!3m2!1sen!2sng!4v1758715071885!5m2!1sen!2sng",
+    "big/103a.jpg","big/103b.jpg", 
 ],
 }
 // -_-__--____-__-_-_______________------------------------______________________----------------------------_______________________---------------------_________________________
@@ -663,9 +667,6 @@ hundred:["KEBBI","Ahmadu Bello Way by Total Filling Station  (Close & Far Range)
 
 
 
-
-
-
 {/* <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63009.60716210091!2d12.425935800467446!3d9.235313503478906!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10fc6b286fd7b635%3A0xd9ef668469028f23!2sMohammed%20mustapha!5e0!3m2!1sen!2sng!4v1719811326100!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
  */}
 
@@ -1017,6 +1018,8 @@ app.get("/boards/:id",(req,res)=>{
         res.render("boards/index",{info:bigBoardInfo.fiftyeight});
     }else if(req.params.id==="59"){
         res.render("boards/index",{info:bigBoardInfo.fiftynine});
+    }else if(req.params.id==="60"){
+        res.render("boards/index",{info:bigBoardInfo.sixty});
     }
 
     
